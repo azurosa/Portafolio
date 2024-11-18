@@ -1,0 +1,12 @@
+let num = 23
+
+// con if
+if num % 2 == 0 {
+    print("el numero \(num) es par")
+}
+else {
+  print("el numero \(num) es impar")
+}
+
+// con el operador ?
+print("el numero \(num) es " + (num % 2 == 0 ? "par":"impar")) 
