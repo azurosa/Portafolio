@@ -1,0 +1,71 @@
+import Foundation
+
+var articles: [String] = []
+
+func showMenu() {
+    print("""
+    Selecciona una opción:
+    1. Registrar artículos
+    2. Ver lista de artículos
+    3. Consultar artículos en existencia
+    4. Salir
+    """)
+}
+
+func registerArticle() {
+    print("Introduce el nombre del artículo:")
+    if let article = readLine() {
+        articles.append(article)
+        print("Artículo registrado exitosamente.")
+    } else {
+        print("Entrada no válida.")
+    }
+}
+
+func viewArticles() {
+    if articles.isEmpty {
+        print("No hay artículos registrados.")
+    } else {
+        print("Lista de artículos:")
+        for (index, article) in articles.enumerated() {
+            print("\(index + 1). \(article)")
+        }
+    }
+}
+
+func checkArticles() {
+    if articles.isEmpty {
+        print("No hay artículos en existencia.")
+    } else {
+        print("Artículos en existencia: \(articles.count)")
+    }
+}
+
+func handleOption(_ option: Int) {
+    switch option {
+    case 1:
+        registerArticle()
+    case 2:
+        viewArticles()
+    case 3:
+        checkArticles()
+    case 4:
+        print("Saliendo...")
+    default:
+        print("Opción no válida. Intenta de nuevo.")
+    }
+}
+
+var shouldContinue = true
+
+while shouldContinue {
+    showMenu()
+    if let input = readLine(), let option = Int(input) {
+        handleOption(option)
+        if option == 4 {
+            shouldContinue = false
+        }
+    } else {
+        print("Entrada no válida. Intenta de nuevo.")
+    }
+}
