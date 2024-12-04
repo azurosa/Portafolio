@@ -1,0 +1,93 @@
+import Foundation
+
+func showMenu() {
+    print("""
+    Selecciona una opción:
+    1. Calcular área del cuadrado
+    2. Calcular área del rectángulo
+    3. Calcular área del triángulo
+    4. Calcular área del círculo
+    5. Salir
+    """)
+}
+
+func calculateSquareArea() {
+    print("Introduce la longitud del lado del cuadrado:")
+    if let input = readLine(), let side = Double(input) {
+        let area = side * side
+        print("El área del cuadrado es \(area).")
+    } else {
+        print("Entrada no válida.")
+    }
+}
+
+func calculateRectangleArea() {
+    print("Introduce la longitud del rectángulo:")
+    if let input1 = readLine(), let length = Double(input1) {
+        print("Introduce el ancho del rectángulo:")
+        if let input2 = readLine(), let width = Double(input2) {
+            let area = length * width
+            print("El área del rectángulo es \(area).")
+        } else {
+            print("Entrada no válida.")
+        }
+    } else {
+        print("Entrada no válida.")
+    }
+}
+
+func calculateTriangleArea() {
+    print("Introduce la base del triángulo:")
+    if let input1 = readLine(), let base = Double(input1) {
+        print("Introduce la altura del triángulo:")
+        if let input2 = readLine(), let height = Double(input2) {
+            let area = 0.5 * base * height
+            print("El área del triángulo es \(area).")
+        } else {
+            print("Entrada no válida.")
+        }
+    } else {
+        print("Entrada no válida.")
+    }
+}
+
+func calculateCircleArea() {
+    print("Introduce el radio del círculo:")
+    if let input = readLine(), let radius = Double(input) {
+        let area = Double.pi * radius * radius
+        print("El área del círculo es \(area).")
+    } else {
+        print("Entrada no válida.")
+    }
+}
+
+func handleOption(_ option: Int) {
+    switch option {
+    case 1:
+        calculateSquareArea()
+    case 2:
+        calculateRectangleArea()
+    case 3:
+        calculateTriangleArea()
+    case 4:
+        calculateCircleArea()
+    case 5:
+        print("Saliendo...")
+    default:
+        print("Opción no válida. Intenta de nuevo.")
+    }
+}
+
+var shouldContinue = true
+
+while shouldContinue {
+    showMenu()
+    if let input = readLine(), let option = Int(input) {
+        handleOption(option)
+        if option == 5 {
+            shouldContinue = false
+        }
+    } else {
+        print("Entrada no válida. Intenta de nuevo.")
+    }
+}
