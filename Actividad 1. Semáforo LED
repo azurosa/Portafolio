@@ -1,0 +1,33 @@
+// C++ code
+//
+void setup()
+{
+  pinMode(13, OUTPUT); // LED Verde
+  pinMode(11, OUTPUT); // LED Amarillo
+  pinMode(9, OUTPUT);  // LED Rojo
+}
+
+void loop()
+{
+  // LED Verde
+  digitalWrite(13, HIGH);
+  delay(5000); // 5 segundos
+  digitalWrite(13, LOW);
+
+  // LED Amarillo (primer parpadeo)
+  digitalWrite(11, HIGH);
+  delay(500); // 0.5 segundos
+  digitalWrite(11, LOW);
+  delay(500); // 0.5 segundos
+
+  // LED Amarillo (segundo parpadeo)
+  digitalWrite(11, HIGH);
+  delay(500);
+  digitalWrite(11, LOW);
+  delay(500);
+
+  // LED Rojo
+  digitalWrite(9, HIGH);
+  delay(3000); // 3 segundos encendido
+  digitalWrite(9, LOW);
+  delay(3000); // 3 segundos apagado 
