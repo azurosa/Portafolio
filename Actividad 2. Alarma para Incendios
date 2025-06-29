@@ -1,0 +1,39 @@
+
+//
+int gas = 0;
+int smokeSensor = A0;
+int buzzer = 8;
+
+void setup() {
+  pinMode(smokeSensor, INPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(13, OUTPUT); // LED Rojo
+  pinMode(11, OUTPUT); // LED Amarillo
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Lectura del sensor de gas
+  gas = analogRead(smokeSensor);
+  Serial.println(gas);
+
+  // Si el valor de gas es peligroso
+  if (gas >= 600) {
+    tone(buzzer, 450, 300);
+    delay(1000);
+    tone(buzzer, 850, 300);
+    delay(1000);
+  } else {
+    noTone(buzzer);
+  }
+
+  // LED Rojo
+  digitalWrite(13, HIGH);
+  delay(5000);
+  digitalWrite(13, LOW);
+
+  // LED Amarillo
+  digitalWrite(11, HIGH);
+  delay(5000);
+  digitalWrite(11, LOW);
+}
